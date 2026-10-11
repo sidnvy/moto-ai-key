@@ -2,7 +2,7 @@
 
 Moto Edge 70 的 ChatGPT 按键助手。无需 root。
 
-[下载 0.9.7 APK](https://github.com/sidnvy/moto-ai-key/releases/latest) · [版本说明](CHANGELOG.md)
+[下载最新 APK](https://github.com/sidnvy/moto-ai-key/releases/latest) · [版本说明](CHANGELOG.md)
 
 ## 按键行为
 
@@ -18,7 +18,10 @@ Moto Edge 70 的 ChatGPT 按键助手。无需 root。
 
 1. 安装 ChatGPT 和本项目 APK，打开 AI Key。
 2. 点击单击、双击演示了解效果，再开启 AI Key 辅助功能。
+   如显示“受限制设置”，先点辅助功能列表中的 AI Key 触发提示，再打开 AI Key 应用信息右上角菜单，选择“允许受限制设置”，完成本人指纹验证后返回开启。授权页提供折叠帮助和应用信息入口。
 3. 在 Motorola AI Key 设置中，将单击分配给 AI Key 的 LaunchActivity，双击分配给 CancelActivity。需要设备固件支持双击启动应用。
+
+卸载重装会恢复按键默认配置，需要重新分配单击和双击。普通更新请直接覆盖安装，无需卸载。
 
 不要求 ChatGPT 为默认助手。原生系统助手浮层未接入本版本。
 

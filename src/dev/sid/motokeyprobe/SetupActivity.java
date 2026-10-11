@@ -451,6 +451,15 @@ public class SetupActivity extends Activity {
     return card;
   }
 
+  private boolean restrictedHelpShown;
+
+  private void showAppInfo() {
+    if (!open(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+        Uri.parse("package:" + getPackageName())))) {
+      notification("打开系统设置 → 应用 → AI Key → 应用信息。");
+    }
+  }
+
   private void buildPermissions() {
     boolean installed = chatInstalled(), access = accessibilityEnabled();
     if (!installed) {
@@ -463,7 +472,24 @@ public class SetupActivity extends Activity {
           access, "去开启", this::showAccessibilitySettings);
       setPrimary(access ? "继续" : "开启辅助功能", access ? this::continueSetup : this::showAccessibilitySettings);
     }
-    frameBand(scene, "不会自动发送消息", 490, SOFT);
+    if (installed) {
+      TextView help = label(scene, restrictedHelpShown ? "收起安装帮助" : "找不到 AI Key，或提示受限制？",
+          24, 368, 344, 44, 14, true, BLUE);
+      help.setFocusable(true);
+      help.setOnClickListener(v -> { restrictedHelpShown = !restrictedHelpShown; render(false); });
+      if (restrictedHelpShown) {
+        label(scene, "1  在辅助功能中点 AI Key，触发限制提示。", 24, 422, 344, 52, 14, false, INK);
+        label(scene, "2  应用信息右上角 ⋮ → 允许受限制设置。", 24, 481, 344, 52, 14, false, INK);
+        label(scene, "3  完成指纹验证，再回来开启 AI Key。", 24, 540, 344, 52, 14, false, INK);
+        TextView info = text("打开 AI Key 应用信息", 15, true, BLUE);
+        info.setGravity(Gravity.CENTER);
+        info.setBackground(bgWithBorder(WHITE, 12));
+        info.setFocusable(true);
+        info.setOnClickListener(v -> showAppInfo());
+        fullWidth(scene, info, 604, 52);
+        frameBand(scene, "权限由你在系统中确认，不会自动发送", 681, SOFT);
+      } else frameBand(scene, "不会自动发送消息", 490, SOFT);
+    } else frameBand(scene, "不会自动发送消息", 490, SOFT);
   }
 
   private void buildMapping() {
@@ -474,6 +500,8 @@ public class SetupActivity extends Activity {
     statusCard(324, "双击", "截图提问 / 取消听写", two, "待确认",
         this::showMotorolaSettings);
     frameBand(scene, "在系统设置中，将两项动作分配给 AI Key", 490, SOFT);
+    label(scene, "卸载重装后，需要重新分配单击与双击。\n以后更新直接覆盖安装，无需卸载。",
+        24, 550, 344, 80, 14, false, MUTED);
     if (one && two) setPrimary("开始使用", this::continueSetup);
     else setPrimary("设置按键", this::showMotorolaSettings);
   }

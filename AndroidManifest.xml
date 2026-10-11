@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.sid.motokeyprobe" android:versionCode="42" android:versionName="0.9.7">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.sid.motokeyprobe" android:versionCode="44" android:versionName="0.9.8">
   <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
   <queries><package android:name="com.openai.chatgpt" /><package android:name="com.motorola.mykey" /></queries>
   <application android:label="AI Key" android:icon="@mipmap/ic_launcher" android:allowBackup="false">
