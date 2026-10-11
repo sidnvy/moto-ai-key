@@ -1,0 +1,5 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+  <shortcut android:shortcutId="setup" android:enabled="true" android:shortcutShortLabel="@string/setup_shortcut">
+    <intent android:action="android.intent.action.VIEW" android:targetPackage="dev.sid.motokeyprobe" android:targetClass="dev.sid.motokeyprobe.SetupActivity" />
+  </shortcut>
+</shortcuts>

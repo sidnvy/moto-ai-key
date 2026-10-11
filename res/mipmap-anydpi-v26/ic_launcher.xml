@@ -1,0 +1,4 @@
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+ <background android:drawable="@color/aik_brand"/>
+ <foreground android:drawable="@drawable/aik_foreground"/>
+</adaptive-icon>
